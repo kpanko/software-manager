@@ -1,6 +1,6 @@
 # Project Management
 
-This project uses a structured session workflow. Four files maintain state:
+This project uses a structured session workflow. These files maintain state:
 
 | File | Purpose | Stability |
 |------|---------|-----------|
@@ -8,6 +8,7 @@ This project uses a structured session workflow. Four files maintain state:
 | `MILESTONES.md` | Major phases, tasks, acceptance criteria | Changes per phase |
 | `STATUS.md` | In-progress work, next steps, blockers | Changes per session |
 | `DECISIONS.md` | Architectural decision log | Append-only |
+| `GITHUB.md` | Repo and project board config (optional) | Set once |
 
 ## Starting a Session
 
@@ -31,3 +32,11 @@ between sessions.
 
 Run `/plan-milestone` to break down the next unstarted milestone into
 concrete tasks using a planning agent.
+
+## GitHub Integration (optional)
+
+If `GITHUB.md` is configured:
+- Run `/setup-github` once to create labels and a project board.
+- `/kickoff` will automatically create GitHub issues for every planned task,
+  track them through implementation, and open PRs that close them.
+- Run `/create-issue` to file a task to the backlog without implementing it.

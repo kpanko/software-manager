@@ -90,6 +90,53 @@ Then open Claude Code in that directory and run `/vision`.
 
 ---
 
+## GitHub integration (optional)
+
+When a project has a GitHub repo, the system can use issues and a project
+board as the task layer instead of just MILESTONES.md.
+
+### Why bother
+
+- Issues outlive context resets — a task filed to the backlog can be picked
+  up by an agent in a future session without re-explaining what it is
+- Each issue body is the implementation plan the agent works from
+- PRs reference and close issues automatically
+- The project board gives a visual overview without opening a code editor
+
+### Setup (once per project)
+
+```bash
+# After creating the repo, in the project directory:
+/setup-github
+```
+
+This creates the labels (`cc-generated`, `backlog`, `in-progress`, `blocked`,
+`ready-for-pr`) and a GitHub Project board, then writes the config to GITHUB.md.
+
+### How it fits the workflow
+
+```
+/kickoff (phase 1 approval)
+  → creates GitHub issues for every planned task
+  → adds them all to the project board as backlog
+
+/kickoff (phase 2 execution)
+  → moves issues to in-progress as work begins
+  → agents open PRs with "closes #N" in the body
+  → issues auto-close when PRs merge
+
+/create-issue
+  → file a task to the backlog without implementing it now
+  → use this when you think of something mid-session you don't want to lose
+```
+
+### Without GitHub
+
+Everything still works — `/kickoff` just tracks state in MILESTONES.md and
+STATUS.md instead. GitHub integration is purely additive.
+
+---
+
 ## Realistic expectations
 
 The quality of the output depends on the quality of VISION.md. A vague
@@ -120,3 +167,5 @@ Things that need more user involvement:
 | `/start-session` | Beginning a hands-on session |
 | `/end-session` | Ending a hands-on session |
 | `/plan-milestone` | Manually planning the next milestone |
+| `/setup-github` | One-time GitHub labels + project board setup |
+| `/create-issue` | File a task to the backlog without implementing it |
