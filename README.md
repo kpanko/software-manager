@@ -68,12 +68,21 @@ lets you pick up exactly where you left off after any gap.
 
 ### Install the slash commands (once)
 
+From **PowerShell**:
+```powershell
+.\install.ps1
+```
+
+From **Git Bash / inside Claude Code**:
 ```bash
 bash install.sh
 ```
 
-This copies the commands into `~/.claude/commands/` so they're available
-in any Claude Code project.
+Avoid running `install.sh` from PowerShell — it will use WSL's bash and
+install to the wrong home directory.
+
+This copies the commands into `%USERPROFILE%\.claude\commands\` so they're
+available in any Claude Code project. Restart CC after installing.
 
 ### Start a new managed project
 
