@@ -18,11 +18,14 @@ field for this project. Run this once after creating the repo.
    gh label create "ready-for-pr"  --color "0e8a16" --description "Implemented, PR not yet open"
    ```
 
-3. Create a GitHub Project board:
+3. Create a GitHub Project board and link the repo to it:
    ```
    gh project create --owner OWNER --title "REPO_NAME"
    ```
-   Capture the project number from the output.
+   Capture the project number from the output, then link the repo:
+   ```
+   gh project link PROJECT_NUMBER --owner OWNER --repo REPO
+   ```
 
 4. Create a Status field with the standard workflow options:
    ```
