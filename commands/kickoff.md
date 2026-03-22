@@ -76,6 +76,10 @@ For each task in the milestone:
 Spawn a general-purpose agent with:
   - The task description and acceptance criteria (or issue URL if GitHub)
   - Relevant context from VISION.md and DECISIONS.md
+  - The "How to Run" section from VISION.md
+  - Instruction to run the project (or test suite) after implementing and
+    verify it works before considering the task done — do not commit code
+    that does not run
   - Instruction to check off the task in MILESTONES.md when done
   - Instruction to append to DECISIONS.md if a significant design choice
     is made
@@ -89,6 +93,8 @@ Tasks that depend on each other must run sequentially.
 
 After all tasks in a milestone are complete, spawn a general-purpose agent
 to review the output:
+- Run the full test suite (or run the app if no tests exist) and confirm
+  it works. If it does not run, stop and fix before continuing.
 - Does the code meet the acceptance criteria?
 - Security: injection, auth bypasses, secrets committed to code?
 - Quality: broken error handling, hardcoded config values, missing edge cases?

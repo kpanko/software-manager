@@ -16,6 +16,14 @@
 <!-- High-level description of the system: major components, how they fit together,
      key technology choices. Diagrams welcome (link or inline mermaid). -->
 
+## How to Run
+<!-- Commands needed to install dependencies, start the project, and run
+     tests. Keep this current — agents use it to verify their work. -->
+
+Install:
+Run:
+Test:
+
 ## Open Questions
 <!-- Unresolved design questions. Move to DECISIONS.md once answered. -->
 -

@@ -40,10 +40,14 @@ issues are clearly independent and trivial (e.g. renaming, copy changes).
   is made.
 
 **3. Test**
-- Run the project's test suite if one exists.
-- If there are no automated tests, manually verify the acceptance
-  criteria from the issue.
-- Fix any failures before proceeding.
+- Read the "How to Run" section of VISION.md for the install, run, and
+  test commands. If that section is missing or incomplete, look for
+  clues in package.json, Makefile, pyproject.toml, README, etc. and
+  update VISION.md with what you find.
+- Run the test command. If there is no test suite, at minimum run the
+  app and verify it starts without errors.
+- Actually execute the commands — do not assume the code works.
+- If anything fails, fix it before committing. Do not commit broken code.
 
 **4. Commit and push**
 - Stage only files relevant to this issue.
