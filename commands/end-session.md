@@ -18,4 +18,32 @@ Wrap up the current working session and save state.
    to `in-progress`.
 5. If a significant architectural decision was made, append it to
    DECISIONS.md.
-6. Confirm to the user what was saved.
+6. [GitHub only] Read GITHUB.md for repo and project_number, then reconcile
+   GitHub state with what actually happened this session:
+   - For each issue that was fully implemented and has an open PR:
+     - Ensure labels are `ready-for-pr` (remove `in-progress`):
+       ```
+       gh issue edit NUMBER --repo OWNER/REPO \
+         --remove-label "in-progress" --add-label "ready-for-pr"
+       ```
+   - For each issue still being worked on, ensure it has `in-progress`
+     and not `backlog`:
+       ```
+       gh issue edit NUMBER --repo OWNER/REPO \
+         --remove-label "backlog" --add-label "in-progress"
+       ```
+   - For each issue that was abandoned or deferred back to backlog:
+       ```
+       gh issue edit NUMBER --repo OWNER/REPO \
+         --remove-label "in-progress" --add-label "backlog"
+       ```
+   - For each issue that was worked but has no PR yet, leave a comment
+     summarizing what was done and what remains:
+       ```
+       gh issue comment NUMBER --repo OWNER/REPO --body "SUMMARY"
+       ```
+   - List any open PRs so the user knows what needs review:
+       ```
+       gh pr list --repo OWNER/REPO --state open
+       ```
+7. Confirm to the user what was saved and show any open PRs.
