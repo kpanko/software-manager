@@ -33,19 +33,20 @@ Use this when you want to capture an idea or task without implementing it immedi
 
 4. Read GITHUB.md for the repo. If not configured, ask the user for owner/repo.
 
-5. Create the issue:
+5. Create the issue and immediately add it to the project board:
    ```
-   gh issue create \
+   ISSUE_URL=$(gh issue create \
      --repo OWNER/REPO \
      --title "TITLE" \
      --body "BODY" \
-     --label "cc-generated,backlog"
-   ```
+     --label "cc-generated,backlog")
 
-6. If GITHUB.md has a project_number, add the issue to the project board:
+   gh project item-add PROJECT_NUMBER \
+     --owner OWNER \
+     --url "$ISSUE_URL"
    ```
-   gh project item-add PROJECT_NUMBER --owner OWNER --url ISSUE_URL
-   ```
+   Read OWNER, REPO, and PROJECT_NUMBER from GITHUB.md. If GITHUB.md has
+   no project_number, skip the second command.
 
 7. Output the issue URL. Tell the user they can pick it up later with /kickoff
    or implement it now by referencing the issue number.

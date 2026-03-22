@@ -30,14 +30,24 @@ tracking (MILESTONES.md / STATUS.md only). Note which mode you are in.
    explicit approval.**
 
 5. [GitHub only] After approval, create GitHub issues for every task in
-   the plan:
-   - Title: short and imperative
-   - Body: context, approach, acceptance criteria (enough for an agent to
-     pick it up cold — see /create-issue for the format)
-   - Labels: `cc-generated`, `backlog`
-   - Add each issue to the project board
-   - Record the issue number next to each task in MILESTONES.md:
-     `- [ ] Task name (#42)`
+   the plan. For each task, run these two commands back to back:
+   ```
+   ISSUE_URL=$(gh issue create \
+     --repo OWNER/REPO \
+     --title "TITLE" \
+     --body "BODY" \
+     --label "cc-generated,backlog")
+
+   gh project item-add PROJECT_NUMBER \
+     --owner OWNER \
+     --url "$ISSUE_URL"
+   ```
+   The body should include: context, approach, and acceptance criteria
+   (enough for an agent to pick it up cold — see /create-issue for the
+   format). Read OWNER, REPO, and PROJECT_NUMBER from GITHUB.md.
+
+   After creating each issue, record its number in MILESTONES.md:
+   `- [ ] Task name (#42)`
 
 ---
 
