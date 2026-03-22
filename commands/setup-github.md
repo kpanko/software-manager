@@ -1,5 +1,5 @@
-One-time setup: initialize GitHub labels and a project board for this project.
-Run this once after creating the repo, before /kickoff.
+One-time setup: initialize GitHub labels, a project board, and a Status
+field for this project. Run this once after creating the repo.
 
 ## Steps
 
@@ -20,17 +20,33 @@ Run this once after creating the repo, before /kickoff.
 
 3. Create a GitHub Project board:
    ```
-   gh project create --owner OWNER --title "PROJECT_NAME"
+   gh project create --owner OWNER --title "REPO_NAME"
    ```
    Capture the project number from the output.
 
-4. Write the config to GITHUB.md:
+4. Create a Status field with the standard workflow options:
+   ```
+   gh project field-create PROJECT_NUMBER \
+     --owner OWNER \
+     --name "Status" \
+     --data-type SINGLE_SELECT \
+     --single-select-options "Backlog,In Progress,Review,Done"
+   ```
+
+5. Write the config to GITHUB.md:
    ```
    repo:           owner/repo
    project_number: N
    ```
 
-5. Confirm to the user:
-   - Labels created
-   - Project board URL
-   - "You're ready to run /kickoff"
+6. Tell the user the automated setup is complete, then give these
+   instructions for the one manual step — adding a Board view, which
+   requires the GitHub web UI:
+
+   > 1. Open the project at: https://github.com/users/OWNER/projects/PROJECT_NUMBER
+   >    (or https://github.com/orgs/OWNER/projects/PROJECT_NUMBER for an org)
+   > 2. Click **+ New view** (next to the default Table view tab)
+   > 3. Select **Board**
+   > 4. The board will automatically group by the Status field
+   >
+   > That's it — the board is ready to use.
