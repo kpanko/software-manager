@@ -29,14 +29,25 @@ tracking (MILESTONES.md / STATUS.md only). Note which mode you are in.
 4. Revise until the user approves. **Do not proceed to Phase 2 without
    explicit approval.**
 
-5. [GitHub only] After approval, create GitHub issues for every task in
-   the plan. For each task, run these two commands back to back:
+5. [GitHub only] After approval:
+
+   First, create a GitHub milestone for each milestone in MILESTONES.md:
+   ```
+   gh api repos/OWNER/REPO/milestones \
+     --method POST \
+     -f title="M1: Name" \
+     -f description="MILESTONE GOAL"
+   ```
+   Record the milestone number returned for each (you'll need it below).
+
+   Then, for each task create an issue and add it to the project board:
    ```
    ISSUE_URL=$(gh issue create \
      --repo OWNER/REPO \
      --title "TITLE" \
      --body "BODY" \
-     --label "cc-generated,backlog")
+     --label "cc-generated,backlog" \
+     --milestone "M1: Name")
 
    gh project item-add PROJECT_NUMBER \
      --owner OWNER \

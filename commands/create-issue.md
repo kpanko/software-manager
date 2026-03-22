@@ -33,13 +33,21 @@ Use this when you want to capture an idea or task without implementing it immedi
 
 4. Read GITHUB.md for the repo. If not configured, ask the user for owner/repo.
 
-5. Create the issue and immediately add it to the project board:
+5. Check which GitHub milestones exist:
+   ```
+   gh api repos/OWNER/REPO/milestones --jq '.[].title'
+   ```
+   If milestones exist, ask the user which one this issue belongs to
+   (or "none / backlog" if it's not tied to a milestone yet).
+
+6. Create the issue and immediately add it to the project board:
    ```
    ISSUE_URL=$(gh issue create \
      --repo OWNER/REPO \
      --title "TITLE" \
      --body "BODY" \
-     --label "cc-generated,backlog")
+     --label "cc-generated,backlog" \
+     --milestone "MILESTONE TITLE")  # omit if no milestone
 
    gh project item-add PROJECT_NUMBER \
      --owner OWNER \
