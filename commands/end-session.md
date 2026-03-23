@@ -13,9 +13,19 @@ Wrap up the current working session and save state.
    - Update "Key Context" with anything non-obvious that future sessions
      need to know. Remove stale context.
    - Set "Last updated" to today's date.
-4. If any MILESTONES.md tasks were completed, check them off. If a full
-   milestone is done, update its status to `done` and set the next one
-   to `in-progress`.
+4. For each task completed this session, check it off in MILESTONES.md:
+   change `- [ ]` to `- [x]`. Then check whether all tasks in the
+   milestone are now checked off. If yes:
+   - Update the milestone status in MILESTONES.md to `done`.
+   - Set the next milestone to `in-progress`.
+   - [GitHub only] Close the GitHub milestone:
+     ```
+     MILESTONE_NUM=$(gh api repos/OWNER/REPO/milestones \
+       --jq '.[] | select(.title == "MILESTONE TITLE") | .number')
+
+     gh api repos/OWNER/REPO/milestones/$MILESTONE_NUM \
+       --method PATCH -f state=closed
+     ```
 5. If a significant architectural decision was made, append it to
    DECISIONS.md.
 6. [GitHub only] Read GITHUB.md for repo and project_number, then reconcile

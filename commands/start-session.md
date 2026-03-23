@@ -64,7 +64,10 @@ issues are clearly independent and trivial (e.g. renaming, copy changes).
   ```
 
 **6. Wrap up**
-- Check off the task in MILESTONES.md.
+- Check off the task in MILESTONES.md: change `- [ ]` to `- [x]`.
+- Check whether all tasks in the current milestone are now checked off.
+  If yes, this milestone is complete — run the milestone completion steps
+  below before asking about the next issue.
 - Update STATUS.md.
 - Report what was done and the PR link.
 - Ask: "Ready for the next issue, or done for today?"
@@ -72,3 +75,20 @@ issues are clearly independent and trivial (e.g. renaming, copy changes).
 If the user says done, run the end-of-session update:
 - Update STATUS.md: in-progress, next up, blockers, key context.
 - Set "Last updated" to today's date.
+
+### Milestone completion steps
+
+Run these when all tasks in a milestone are checked off:
+
+1. Update MILESTONES.md: change the milestone status from `in-progress`
+   to `done`. Set the next milestone to `in-progress`.
+2. [GitHub only] Close the GitHub milestone:
+   ```
+   MILESTONE_NUM=$(gh api repos/OWNER/REPO/milestones \
+     --jq '.[] | select(.title == "MILESTONE TITLE") | .number')
+
+   gh api repos/OWNER/REPO/milestones/$MILESTONE_NUM \
+     --method PATCH -f state=closed
+   ```
+3. Update STATUS.md to reflect the new active milestone.
+4. Tell the user the milestone is closed and what the next one is.

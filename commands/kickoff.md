@@ -119,7 +119,18 @@ If issues are found, spawn a fix agent before continuing.
 
 ### 2d. Milestone checkpoint
 
-- Update MILESTONES.md: mark milestone `done`, next one `in-progress`.
+- Verify all tasks in the milestone are checked off in MILESTONES.md
+  (`- [x]`). Check off any that were completed but not yet marked.
+- Update the milestone status in MILESTONES.md to `done`.
+- Set the next milestone to `in-progress`.
+- [GitHub only] Close the GitHub milestone:
+  ```
+  MILESTONE_NUM=$(gh api repos/OWNER/REPO/milestones \
+    --jq '.[] | select(.title == "MILESTONE TITLE") | .number')
+
+  gh api repos/OWNER/REPO/milestones/$MILESTONE_NUM \
+    --method PATCH -f state=closed
+  ```
 - Update STATUS.md.
 
 Report to the user:
