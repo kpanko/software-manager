@@ -82,13 +82,7 @@ Run these when all tasks in a milestone are checked off:
 
 1. Update MILESTONES.md: change the milestone status from `in-progress`
    to `done`. Set the next milestone to `in-progress`.
-2. [GitHub only] GitHub closes a milestone automatically when all its
-   issues are closed. Verify this happened:
-   ```
-   gh api repos/OWNER/REPO/milestones \
-     --jq '.[] | select(.title == "MILESTONE TITLE") | {state, open_issues}'
-   ```
-   If `open_issues` is 0 but `state` is still `open`, close it manually:
+2. [GitHub only] Close the GitHub milestone:
    ```
    MILESTONE_NUM=$(gh api repos/OWNER/REPO/milestones \
      --jq '.[] | select(.title == "MILESTONE TITLE") | .number')

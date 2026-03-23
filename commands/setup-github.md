@@ -11,7 +11,7 @@ field for this project. Run this once after creating the repo.
 
 2. Create labels (skip any that already exist):
    ```
-   gh label create "cc-generated"  --color "0075ca" --description "Created by Claude Code"
+   gh label create "cc-generated"  --color "0075ca" --description "Created by automated agent"
    gh label create "backlog"       --color "e4e669" --description "Not yet started"
    gh label create "in-progress"   --color "0052cc" --description "Currently being worked on"
    gh label create "blocked"       --color "d93f0b" --description "Blocked — needs input"

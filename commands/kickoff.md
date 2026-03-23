@@ -123,13 +123,7 @@ If issues are found, spawn a fix agent before continuing.
   (`- [x]`). Check off any that were completed but not yet marked.
 - Update the milestone status in MILESTONES.md to `done`.
 - Set the next milestone to `in-progress`.
-- [GitHub only] GitHub closes a milestone automatically when all its
-  issues are closed. Verify this happened:
-  ```
-  gh api repos/OWNER/REPO/milestones \
-    --jq '.[] | select(.title == "MILESTONE TITLE") | {state, open_issues}'
-  ```
-  If `open_issues` is 0 but `state` is still `open`, close it manually:
+- [GitHub only] Close the GitHub milestone:
   ```
   MILESTONE_NUM=$(gh api repos/OWNER/REPO/milestones \
     --jq '.[] | select(.title == "MILESTONE TITLE") | .number')
