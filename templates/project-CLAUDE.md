@@ -12,14 +12,13 @@ This project uses a structured session workflow. These files maintain state:
 
 ## Starting a Session
 
-Run `/start-session`. It will read the above files and orient you.
-Do not begin coding before running it.
+Run `/start-session` to orient yourself — it reads the project docs,
+shows what's in progress, and walks you through the work loop.
+It is optional. If you know what you want to work on, just start.
 
 ## Ending a Session
 
-Run `/end-session`. It will update STATUS.md and MILESTONES.md based on
-what was accomplished. Do not skip this — it's how context survives
-between sessions.
+Run `/end-session` to save state. Skip it only if nothing changed.
 
 ## During a Session
 
