@@ -27,29 +27,22 @@ field for this project. Run this once after creating the repo.
    gh project link PROJECT_NUMBER --owner OWNER --repo REPO
    ```
 
-4. Create a Status field with the standard workflow options:
-   ```
-   gh project field-create PROJECT_NUMBER \
-     --owner OWNER \
-     --name "Status" \
-     --data-type SINGLE_SELECT \
-     --single-select-options "Backlog,In Progress,Review,Done"
-   ```
-
-5. Write the config to GITHUB.md:
+4. Write the config to GITHUB.md:
    ```
    repo:           owner/repo
    project_number: N
    ```
 
-6. Tell the user the automated setup is complete, then give these
-   instructions for the one manual step — adding a Board view, which
-   requires the GitHub web UI:
+5. Tell the user the automated setup is complete, then give these
+   instructions for the one manual step — adding a Board view grouped
+   by Milestone, which requires the GitHub web UI:
 
    > 1. Open the project at: https://github.com/users/OWNER/projects/PROJECT_NUMBER
    >    (or https://github.com/orgs/OWNER/projects/PROJECT_NUMBER for an org)
    > 2. Click **+ New view** (next to the default Table view tab)
    > 3. Select **Board**
-   > 4. The board will automatically group by the Status field
+   > 4. Click the **Group** control and set it to **Milestone**
    >
-   > That's it — the board is ready to use.
+   > Issues will now appear as columns per milestone. Issue labels
+   > (backlog, in-progress, blocked, ready-for-pr) are the source of
+   > truth for status — the default Status field on the board is unused.
