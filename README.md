@@ -175,6 +175,6 @@ Things that need more user involvement:
 | `/kickoff` | Ready to build — plans and executes autonomously |
 | `/start-session` | Beginning a hands-on session |
 | `/end-session` | Ending a hands-on session |
-| `/plan-milestone` | Manually planning the next milestone |
+| `/add-milestone` | Insert a new milestone at any position mid-project |
 | `/setup-github` | One-time GitHub labels + project board setup |
 | `/create-issue` | File a task to the backlog without implementing it |

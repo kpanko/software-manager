@@ -27,11 +27,6 @@ Run `/end-session` to save state. Skip it only if nothing changed.
 - When you hit a blocker, add it to STATUS.md under Blockers.
 - Do not modify VISION.md without explicitly discussing it with the user.
 
-## Planning a Milestone
-
-Run `/plan-milestone` to break down the next unstarted milestone into
-concrete tasks using a planning agent.
-
 ## GitHub Integration (optional)
 
 If `GITHUB.md` is configured:
