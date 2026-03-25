@@ -31,17 +31,20 @@ gh api repos/OWNER/REPO/milestones/$MILESTONE_NUM \
   --method PATCH -f title="NEW TITLE"
 ```
 
-### 4. Update MILESTONES.md
+### 4. Update MILESTONES.md (structure only — no issue numbers yet)
 
 Insert the new milestone in the correct position with:
 - Status: `planned` (or `in-progress` if it should start immediately)
 - Goal
 - Acceptance criteria
-- Task list
+- Task list (no issue numbers yet — those come from GitHub in step 6)
+
+Do not write issue numbers into MILESTONES.md until the issues have
+actually been created in GitHub.
 
 ### 5. Create the GitHub milestone
 
-[GitHub only]
+[GitHub only] Run this and confirm it succeeds before continuing:
 ```
 gh api repos/OWNER/REPO/milestones \
   --method POST \
@@ -49,9 +52,10 @@ gh api repos/OWNER/REPO/milestones \
   -f description="MILESTONE GOAL"
 ```
 
-### 6. Create issues
+### 6. Create issues and record numbers
 
-[GitHub only] For each task, create an issue and add it to the project board:
+[GitHub only] For each task, run both commands, confirm they succeed,
+then move on to the next task:
 ```
 ISSUE_URL=$(gh issue create \
   --repo OWNER/REPO \
@@ -65,8 +69,13 @@ gh project item-add PROJECT_NUMBER \
   --url "$ISSUE_URL"
 ```
 The body should include context, approach, and acceptance criteria.
-Record each issue number in MILESTONES.md next to its task:
+
+After each issue is successfully created, immediately update the
+corresponding task line in MILESTONES.md with the issue number:
 `- [ ] Task name (#N)`
+
+Never write a placeholder issue number. If the `gh` command fails,
+stop and report the error.
 
 ### 7. Confirm
 
