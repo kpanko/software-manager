@@ -40,7 +40,9 @@ tracking (MILESTONES.md / STATUS.md only). Note which mode you are in.
    ```
    Record the milestone number returned for each (you'll need it below).
 
-   Then, for each task create an issue and add it to the project board:
+   Do not write issue numbers into MILESTONES.md until the issues have
+   actually been created. For each task, run both commands, confirm they
+   succeed, then move to the next task:
    ```
    ISSUE_URL=$(gh issue create \
      --repo OWNER/REPO \
@@ -57,8 +59,11 @@ tracking (MILESTONES.md / STATUS.md only). Note which mode you are in.
    (enough for an agent to pick it up cold — see /create-issue for the
    format). Read OWNER, REPO, and PROJECT_NUMBER from GITHUB.md.
 
-   After creating each issue, record its number in MILESTONES.md:
-   `- [ ] Task name (#42)`
+   After each issue is successfully created, immediately record its number
+   in MILESTONES.md: `- [ ] Task name (#42)`
+
+   Never write a placeholder issue number. If a `gh` command fails,
+   stop and report the error.
 
 ---
 
