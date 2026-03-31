@@ -55,4 +55,15 @@ Wrap up the current working session and save state.
        ```
        gh pr list --repo OWNER/REPO --state open
        ```
-7. Confirm to the user what was saved and show any open PRs.
+7. Commit and push all uncommitted work:
+   - Run `git status` to see what's modified or untracked.
+   - Stage everything that was changed this session (source code, docs,
+     config — anything that should be committed).
+   - Do not stage secrets, build artifacts, or files the .gitignore
+     would exclude.
+   - Write a commit message summarizing what was done this session.
+     If multiple issues were worked, mention them: `work: foo (#N), bar (#M)`
+   - Push to the current branch.
+   - If there is nothing to commit, skip this step.
+
+8. Confirm to the user what was saved and show any open PRs.
