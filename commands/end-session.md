@@ -1,9 +1,11 @@
 Wrap up the current working session and save state.
 
 1. Review the conversation history to identify what was accomplished.
-2. Ask the user: "Anything to add — blockers, decisions, or context I
-   should capture?"
-3. Wait for their response, then update STATUS.md:
+2. Only ask the user a question if something specific is genuinely
+   ambiguous after reviewing the conversation (e.g., it's unclear
+   whether a half-finished change should be kept or reverted). Do not
+   ask a generic "anything to add?" prompt.
+3. Update STATUS.md:
    - Move completed items into "Recently Completed" (trim old ones if
      the list gets long).
    - Update "In Progress" to reflect current state.
