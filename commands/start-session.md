@@ -62,6 +62,11 @@ issues are clearly independent and trivial (e.g. renaming, copy changes).
     --title "SHORT TITLE (#N)" \
     --body "closes #N\n\nBRIEF DESCRIPTION"
   ```
+- [GitHub only] Remove the `in-progress` label (GitHub auto-closes the issue
+  on merge but does not clean up labels):
+  ```
+  gh issue edit NUMBER --repo OWNER/REPO --remove-label "in-progress"
+  ```
 
 **6. Wrap up**
 - Check off the task in MILESTONES.md: change `- [ ]` to `- [x]`.
