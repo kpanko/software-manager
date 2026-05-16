@@ -410,12 +410,15 @@ git commit -m "plugin: remove obsolete install scripts and empty directories"
 
 ---
 
-### Task 5: Rewrite `README.md` for plugin installation
+### Task 5: Rewrite `README.md` and `CLAUDE.md` for plugin installation
 
 **Files:**
 - Modify: `README.md`
+- Modify: `CLAUDE.md`
 
 The README has three sections that need to change. Other sections (core idea, two modes, the four documents, GitHub integration, realistic expectations, commands reference) stay as-is except for one table addition.
+
+The repo's own `CLAUDE.md` describes the structure of this project and references the now-deleted `templates/`, `commands/`, `install.sh`, and a stale `plan-milestone.md`. It needs a small rewrite to match the plugin layout.
 
 - [ ] **Step 1: Replace the "Install the slash commands (once)" section**
 
@@ -478,11 +481,48 @@ grep -n 'install\.sh\|install\.ps1\|templates/' README.md
 
 Expected: the only matches are inside the "Migrating from the old install.sh" subsection. Any other matches indicate a stale reference that needs cleanup.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 5: Rewrite the repo's own `CLAUDE.md`**
+
+Replace the entire current contents of `CLAUDE.md` (which describes the pre-plugin layout) with the following:
+
+````markdown
+# Software Manager
+
+This repo is a Claude Code marketplace plugin that provides a
+session-based project management workflow.
+
+## Structure
+
+```
+.claude-plugin/        Plugin and marketplace manifests
+  plugin.json
+  marketplace.json
+
+skills/                One folder per skill — Claude Code auto-discovers these
+  vision/              /vision — capture project vision
+  kickoff/             /kickoff — plan and execute milestones
+  start-session/       /start-session
+  end-session/         /end-session
+  add-milestone/       /add-milestone
+  create-issue/        /create-issue
+  setup-github/        /setup-github
+  setup-project/       /setup-project — bootstrap a new managed project
+    templates/         Scaffold files copied by /setup-project
+```
+
+## Workflow
+
+- Bootstrap a managed project with `/setup-project`
+- Begin each session with `/start-session`
+- End each session with `/end-session`
+- Plan new milestones with `/add-milestone` or `/kickoff`
+````
+
+- [ ] **Step 6: Commit**
 
 ```bash
-git add README.md
-git commit -m "docs: rewrite README for plugin installation"
+git add README.md CLAUDE.md
+git commit -m "docs: rewrite README and CLAUDE.md for plugin installation"
 ```
 
 ---
