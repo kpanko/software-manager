@@ -69,7 +69,7 @@ lets you pick up exactly where you left off after any gap.
 ### Install the plugin (once)
 
 ```
-/plugin marketplace add pankok/software-manager
+/plugin marketplace add kpanko/software-manager
 /plugin install software-manager
 ```
 
