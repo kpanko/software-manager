@@ -1,3 +1,8 @@
+---
+name: vision
+description: Conduct a structured conversation to capture the project vision, then write VISION.md.
+---
+
 Conduct a structured conversation to capture the project vision, then write VISION.md.
 
 ## Your role

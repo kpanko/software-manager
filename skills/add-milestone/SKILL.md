@@ -1,3 +1,8 @@
+---
+name: add-milestone
+description: Insert a new milestone at any position in MILESTONES.md and create the matching GitHub milestone and issues.
+---
+
 Add a new milestone to the project, inserting it at the right position
 in MILESTONES.md and creating the corresponding GitHub milestone and issues.
 

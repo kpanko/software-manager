@@ -1,3 +1,8 @@
+---
+name: setup-github
+description: One-time setup: initialize GitHub labels, a project board, and a Status field for issue tracking.
+---
+
 One-time setup: initialize GitHub labels, a project board, and a Status
 field for this project. Run this once after creating the repo.
 

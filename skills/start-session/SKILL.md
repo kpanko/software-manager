@@ -1,3 +1,8 @@
+---
+name: start-session
+description: Start a working session on this project. Read state files, orient, and ask what to focus on.
+---
+
 Start a working session on this project.
 
 ## Orientation
