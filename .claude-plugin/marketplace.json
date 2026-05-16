@@ -1,0 +1,11 @@
+{
+  "name": "software-manager",
+  "owner": { "name": "Kevin Panko" },
+  "plugins": [
+    {
+      "name": "software-manager",
+      "source": ".",
+      "description": "Session-based project management workflow for Claude Code."
+    }
+  ]
+}

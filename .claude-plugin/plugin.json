@@ -1,0 +1,6 @@
+{
+  "name": "software-manager",
+  "version": "0.1.0",
+  "description": "Session-based project management workflow for Claude Code.",
+  "author": { "name": "Kevin Panko" }
+}
