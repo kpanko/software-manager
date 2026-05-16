@@ -40,7 +40,7 @@ For when you're actively involved and want finer control.
 ```
 /start-session   → reads all docs, orients you, asks what to focus on
 /end-session     → saves state: what's done, what's next, blockers
-/plan-milestone  → uses planning agent to break down next milestone
+/add-milestone   → inserts a new milestone and creates its GitHub issues
 ```
 
 You can mix modes: start with `/kickoff` for the first few milestones,
