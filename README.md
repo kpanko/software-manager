@@ -66,36 +66,38 @@ lets you pick up exactly where you left off after any gap.
 
 ## Setup
 
-### Install the slash commands (once)
+### Install the plugin (once)
 
-From **PowerShell**:
-```powershell
-.\install.ps1
+```
+/plugin marketplace add pankok/software-manager
+/plugin install software-manager
 ```
 
-From **Git Bash / inside Claude Code**:
+Restart Claude Code if the new skills don't appear in the `/` menu.
+
+#### Migrating from the old install.sh
+
+If you previously installed via `install.sh`, remove the leftover
+command files from Git Bash:
+
 ```bash
-bash install.sh
+rm ~/.claude/commands/{vision,kickoff,start-session,end-session,add-milestone,create-issue,setup-github}.md
 ```
-
-Avoid running `install.sh` from PowerShell — it will use WSL's bash and
-install to the wrong home directory.
-
-This copies the commands into `%USERPROFILE%\.claude\commands\` so they're
-available in any Claude Code project. Restart CC after installing.
 
 ### Start a new managed project
 
-```bash
-# In the new project directory:
-cp /path/to/software-manager/templates/VISION.md .
-cp /path/to/software-manager/templates/MILESTONES.md .
-cp /path/to/software-manager/templates/STATUS.md .
-cp /path/to/software-manager/templates/DECISIONS.md .
-cp /path/to/software-manager/templates/project-CLAUDE.md CLAUDE.md
+In the new project directory, run:
+
+```
+/setup-project
 ```
 
-Then open Claude Code in that directory and run `/vision`.
+This copies the scaffolding files (`VISION.md`, `MILESTONES.md`,
+`STATUS.md`, `DECISIONS.md`, `GITHUB.md`) into the current directory
+and sets up `CLAUDE.md`. Re-running it is safe — existing files are
+never overwritten.
+
+Then run `/vision`.
 
 ---
 
@@ -171,6 +173,7 @@ Things that need more user involvement:
 
 | Command | When to use |
 |---------|-------------|
+| `/setup-project` | Starting a new managed project — copies scaffolding templates into the current directory |
 | `/vision` | Starting a new project — generates VISION.md |
 | `/kickoff` | Ready to build — plans and executes autonomously |
 | `/start-session` | Beginning a hands-on session |
