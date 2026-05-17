@@ -1,3 +1,8 @@
+---
+name: create-issue
+description: Draft and file a GitHub issue for a task, adding it to the project backlog.
+---
+
 Draft and file a GitHub issue for a task, adding it to the project backlog.
 Use this when you want to capture an idea or task without implementing it immediately.
 

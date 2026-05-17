@@ -1,3 +1,8 @@
+---
+name: end-session
+description: Wrap up the current working session, save state, and commit and push session work.
+---
+
 Wrap up the current working session and save state.
 
 1. Review the conversation history to identify what was accomplished.
