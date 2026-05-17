@@ -4,7 +4,10 @@
   "plugins": [
     {
       "name": "software-manager",
-      "source": ".",
+      "source": {
+        "source": "github",
+        "repo": "kpanko/software-manager"
+      },
       "description": "Session-based project management workflow for Claude Code."
     }
   ]
